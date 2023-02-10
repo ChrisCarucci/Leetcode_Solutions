@@ -1,22 +1,22 @@
-const MinStack = function() {
-    this.elements = [];
-  };
-  
-  MinStack.prototype.push = function(x) {
-    this.elements.push({
-      value: x,
-      min: this.elements.length === 0 ? x : Math.min(x, this.getMin()),
-    });
-  };
-
-  MinStack.prototype.pop = function() {
-    this.elements.pop();
-  };
-
-  MinStack.prototype.top = function() {
-    return this.elements[this.elements.length - 1].value;
-  };
-
-  MinStack.prototype.getMin = function() {
-    return this.elements[this.elements.length - 1].min;
-  };
+class MinStack {
+  constructor() {
+      this.stack = [];
+      this.min = Infinity;
+  }
+  push(x) {
+      const valMinPair = {val: x, prevMin: this.min};
+      this.stack.push(valMinPair);
+      this.min = Math.min(this.min, x);
+  }
+  pop() {
+      const {val, prevMin} = this.stack.pop();
+      this.min = prevMin;
+      return val;
+  }
+  top() {
+      return this.stack[this.stack.length - 1].val;
+  }
+  getMin() {
+      return this.min;
+  }
+}
