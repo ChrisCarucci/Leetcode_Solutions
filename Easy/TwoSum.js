@@ -1,7 +1,7 @@
-let twoSum = (array, sum) => {
+const twoSum = (array, sum) => {
   let map = new Map();
   
-  for(let i=0;i < array.length; i++){
+  for(let i = 0; i < array.length; i++){
       let target = sum - array[i]
       
       if(map.has(target)) {
@@ -9,4 +9,5 @@ let twoSum = (array, sum) => {
       }
       map.set(array[i], i)
   }
+  return "No Match.. :("
 }
