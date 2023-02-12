@@ -1,13 +1,18 @@
-const twoSum = (array, sum) => {
-  let map = new Map();
-  
-  for(let i = 0; i < array.length; i++){
-      let target = sum - array[i]
-      
-      if(map.has(target)) {
-        return [i, map.get(target, i)]
-      }
-      map.set(array[i], i)
-  }
-  return "No Match.. :("
+nums = [6, 2, 5, 7, 8, 19, 22];
+sum = 9;
+
+const twoSum = (nums, sum) => {
+
+    let hash = new Map();
+    
+    for (let i = 0; i < nums.length; i++) {
+        let target = sum - nums[i];
+        if (hash.has(target)) {
+            return [i, hash.get(target, i)]
+        }
+        hash.set(nums[i], i)
+    }
+    return "No match found... :("
 }
+
+console.log(twoSum(nums, sum))
